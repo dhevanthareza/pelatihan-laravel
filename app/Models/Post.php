@@ -27,9 +27,9 @@ class Post extends Model
         'content'       => 'required'
     ];
 
-    public function category()
-    {
-        return $this->hasOne(Category::class, 'id', 'categories_id');
-    }
+    // public function category()
+    // {
+    //     return $this->belongsTo(Category::class, 'categories_id', 'id');
+    // }
 
 }

@@ -44,16 +44,6 @@
                     <a class="nav-link" href="{{ url('admin/post') }}">Post</a>
                 </li>
             </ul>
-            <div class="my-2 my-lg-0">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <a href="{{ url('admin/profile/' . session('admin_id')) }}" class="link-menu">Profile</a>
-                    </label>
-                    <label class="btn btn-secondary">
-                        <a href="{{ url('logout') }}" class="link-menu">Log Out</a>
-                    </label>
-                </div>
-            </div>
         </div>
     </nav>
 

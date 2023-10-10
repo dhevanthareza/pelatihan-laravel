@@ -19,43 +19,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PortalController::class, 'index']);
 
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
 
-// Route Akses Admin
-Route::get('register', [AdminController::class, 'register']);
-Route::post('register', [AdminController::class, 'postRegister']);
-Route::get('login', [AdminController::class, 'login']);
-Route::post('login', [AdminController::class, 'postLogin']);
-Route::get('logout', [AdminController::class, 'logout']);
+    Route::prefix('category')->group(function () {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::get('create', [CategoryController::class, 'create']);
+        Route::post('create', [CategoryController::class, 'insert']);
+        Route::get('edit/{id}', [CategoryController::class, 'edit']);
+        Route::post('edit/{id}', [CategoryController::class, 'update']);
+        Route::get('delete/{id}', [CategoryController::class, 'delete']);
+    });
 
-
-// Route Menu Admin
-Route::middleware('checkAdmin')->group(function(){
-    Route::prefix('admin')->group(function(){
-        Route::get('/', [AdminController::class, 'index']);
-
-        Route::prefix('category')->group(function(){
-            Route::get('/', [CategoryController::class, 'index']);
-            Route::get('create', [CategoryController::class, 'create']);
-            Route::post('create', [CategoryController::class, 'insert']);
-            Route::get('edit/{id}', [CategoryController::class, 'edit']);
-            Route::post('edit/{id}', [CategoryController::class, 'update']);
-            Route::get('delete/{id}', [CategoryController::class, 'delete']);
-        });
-
-        Route::prefix('post')->group(function(){
-            Route::get('/', [PostController::class, 'index']);
-            Route::get('create', [PostController::class, 'create']);
-            Route::post('create', [PostController::class, 'insert']);
-            Route::get('edit/{id}', [PostController::class, 'edit']);
-            Route::post('edit/{id}', [PostController::class, 'update']);
-            Route::get('delete/{id}', [PostController::class, 'delete']);
-        });
+    Route::prefix('post')->group(function () {
+        Route::get('/', [PostController::class, 'index']);
+        Route::get('create', [PostController::class, 'create']);
+        Route::post('create', [PostController::class, 'insert']);
+        Route::get('edit/{id}', [PostController::class, 'edit']);
+        Route::post('edit/{id}', [PostController::class, 'update']);
+        Route::get('delete/{id}', [PostController::class, 'delete']);
+    });
 
 
-        Route::prefix('profile')->group(function(){
-            Route::get('{id}', [AdminController::class, 'edit']);
-            Route::post('{id}', [AdminController::class, 'update']);
-        });
-
+    Route::prefix('profile')->group(function () {
+        Route::get('{id}', [AdminController::class, 'edit']);
+        Route::post('{id}', [AdminController::class, 'update']);
     });
 });

@@ -18,8 +18,4 @@ class Category extends Model
         'name'      => 'required',
         'image'     => 'required'
     ];
-
-    public function slider(){
-		return $this->belongsTo(Slider::class, 'categories_id', 'id');
-	}
 }

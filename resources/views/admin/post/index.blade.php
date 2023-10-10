@@ -19,7 +19,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        @foreach ($data as $post)
+        {{-- @foreach ($data as $post)
         <tr>
             <td>{{$post->title}}</td>
             <td><img width="100px" src="{{ url($post->thumbnail) }}"></td>
@@ -30,7 +30,7 @@
                 <a href="{{ url('admin/post/delete/'.$post->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash"></i> Delete</a>
             </td>
         </tr>
-        @endforeach
+        @endforeach --}}
 
     </table>
 @endsection
