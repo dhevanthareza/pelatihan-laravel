@@ -20,8 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [PortalController::class, 'index']);
 Route::get("/namasaya", [PortalController::class, 'nama']);
 
-// Route::prefix('admin')->group(function () {
-//     Route::get('/', [AdminController::class, 'index']);
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/viewform', [AdminController::class, 'fungsi_viewform']);
+    Route::post('/kirimdataform', [AdminController::class, 'fungsi_kirimdataform']);
+    Route::get('/kirimemail', [AdminController::class, 'fungsi_kirimemail']);
 
 //     Route::prefix('category')->group(function () {
 //         Route::get('/', [CategoryController::class, 'index']);
@@ -46,4 +49,4 @@ Route::get("/namasaya", [PortalController::class, 'nama']);
 //         Route::get('{id}', [AdminController::class, 'edit']);
 //         Route::post('{id}', [AdminController::class, 'update']);
 //     });
-// });
+});
