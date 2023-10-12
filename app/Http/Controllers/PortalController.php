@@ -14,7 +14,10 @@ class PortalController extends Controller
 {
     public function index()
     {
-
         return view('portal.index');
+    }
+
+    public function nama() {
+        return view("portal.namasaya");
     }
 }
