@@ -26,14 +26,14 @@ Route::prefix('admin')->group(function () {
     Route::post('/kirimdataform', [AdminController::class, 'fungsi_kirimdataform']);
     Route::get('/kirimemail', [AdminController::class, 'fungsi_kirimemail']);
 
-//     Route::prefix('category')->group(function () {
-//         Route::get('/', [CategoryController::class, 'index']);
-//         Route::get('create', [CategoryController::class, 'create']);
-//         Route::post('create', [CategoryController::class, 'insert']);
-//         Route::get('edit/{id}', [CategoryController::class, 'edit']);
-//         Route::post('edit/{id}', [CategoryController::class, 'update']);
-//         Route::get('delete/{id}', [CategoryController::class, 'delete']);
-//     });
+    Route::prefix('category')->group(function () {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::get('create', [CategoryController::class, 'create']);
+        Route::post('create', [CategoryController::class, 'insert']);
+        Route::get('edit/{id}', [CategoryController::class, 'edit']);
+        Route::post('edit/{id}', [CategoryController::class, 'update']);
+        Route::get('delete/{id}', [CategoryController::class, 'delete']);
+    });
 
 //     Route::prefix('post')->group(function () {
 //         Route::get('/', [PostController::class, 'index']);

@@ -11,32 +11,40 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        // $data = Category::get();
-        // return view('admin.category.index', compact('data'));
+        $data = Category::get();
+        return view("admin.category.index", compact('data'));
     }
 
     public function create()
     {
-        // return view('admin.category.create');
+        return view('admin.category.create');
     }
 
     public function insert(Request $request)
     {
-        // $request->validate(Category::$rules);
-        // $requests = $request->all();
-        // $requests['image'] = "";
-        // if ($request->hasFile('image')) {
-        //     $files = Str::random("20") . "-" . $request->image->getClientOriginalName();
-        //     $request->file('image')->move("file/category/", $files);
-        //     $requests['image'] = "file/category/" . $files;
-        // }
+        $request->validate(Category::$rules); // Validasi
 
-        // $cat = Category::create($requests);
-        // if($cat){
-        //     return redirect('admin/category')->with('status', 'Berhasil menambah data !');
-        // }
 
-        // return redirect('admin/category')->with('status', 'Gagal menambah data !');
+        $requests = $request->all(); // Mengambil semua inputan
+
+        $requests['image'] = ""; // Nyiapin varioabel untuk nampung data gambar
+
+
+        if ($request->hasFile('image')) {
+
+            $files = Str::random("20") . "-" . $request->image->getClientOriginalName(); // Mengatur nama file
+
+            $request->file('image')->move("file/category/", $files); // Mengcopy file yang di upload user ke directory aplikasi
+
+            $requests['image'] = "file/category/" . $files; // Mgisi variabel kosing yang tadi disiapkan
+        }
+
+        $cat = Category::create($requests); // Insert data ke databse
+        if($cat){
+            return redirect('admin/category')->with('status', 'Berhasil menambah data !');
+        }
+
+        return redirect('admin/category')->with('status', 'Gagal menambah data !');
     }
 
     public function edit($id)

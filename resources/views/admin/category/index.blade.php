@@ -16,7 +16,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        {{-- @foreach ($data as $cat)
+        @foreach ($data as $cat)
         <tr>
             <td>{{$cat->name}}</td>
             <td><img width="100px" src="{{ url($cat->image) }}"></td>
@@ -25,7 +25,7 @@
                 <a href="{{ url('admin/category/delete/'.$cat->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash"></i> Delete</a>
             </td>
         </tr>
-        @endforeach --}}
+        @endforeach
 
     </table>
 @endsection
