@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Post;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
     public function index()
     {
-        // $data = Post::get();
-        // return view('admin.post.index', compact('data'));
+        $data = Post::get();
+        return view('admin.post.index', compact('data'));
     }
 
     public function create()
@@ -21,21 +23,21 @@ class PostController extends Controller
 
     public function insert(Request $request)
     {
-        // $request->validate(Post::$rules);
-        // $requests = $request->all();
-        // $requests['thumbnail'] = "";
-        // if ($request->hasFile('thumbnail')) {
-        //     $files = Str::random("20") . "-" . $request->thumbnail->getClientOriginalName();
-        //     $request->file('thumbnail')->move("file/post/", $files);
-        //     $requests['thumbnail'] = "file/post/" . $files;
-        // }
+        $request->validate(Post::$rules);
+        $requests = $request->all();
+        $requests['thumbnail'] = "";
+        if ($request->hasFile('thumbnail')) {
+            $files = Str::random("20") . "-" . $request->thumbnail->getClientOriginalName();
+            $request->file('thumbnail')->move("file/post/", $files);
+            $requests['thumbnail'] = "file/post/" . $files;
+        }
 
-        // $cat = Post::create($requests);
-        // if($cat){
-        //     return redirect('admin/post')->with('status', 'Berhasil menambah data !');
-        // }
+        $cat = Post::create($requests);
+        if($cat){
+            return redirect('admin/post')->with('status', 'Berhasil menambah data !');
+        }
 
-        // return redirect('admin/post')->with('status', 'Gagal menambah data !');
+        return redirect('admin/post')->with('status', 'Gagal menambah data !');
     }
 
     public function edit($id)

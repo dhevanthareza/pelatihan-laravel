@@ -35,14 +35,14 @@ Route::prefix('admin')->group(function () {
         Route::get('delete/{id}', [CategoryController::class, 'delete']);
     });
 
-//     Route::prefix('post')->group(function () {
-//         Route::get('/', [PostController::class, 'index']);
-//         Route::get('create', [PostController::class, 'create']);
-//         Route::post('create', [PostController::class, 'insert']);
-//         Route::get('edit/{id}', [PostController::class, 'edit']);
-//         Route::post('edit/{id}', [PostController::class, 'update']);
-//         Route::get('delete/{id}', [PostController::class, 'delete']);
-//     });
+    Route::prefix('post')->group(function () {
+        Route::get('/', [PostController::class, 'index']);
+        Route::get('create', [PostController::class, 'create']);
+        Route::post('create', [PostController::class, 'insert']);
+        Route::get('edit/{id}', [PostController::class, 'edit']);
+        Route::post('edit/{id}', [PostController::class, 'update']);
+        Route::get('delete/{id}', [PostController::class, 'delete']);
+    });
 
 
 //     Route::prefix('profile')->group(function () {

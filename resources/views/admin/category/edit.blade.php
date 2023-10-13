@@ -16,7 +16,8 @@
             @csrf
             <label for="name">Name</label>
             <input type="text" name="name" value="{{$data->name}}" class="form-control">
-            <label for="image">Image</label>
+            <label for="image">Image</label><br/>
+            <img width="100px" src="{{ url($data->image) }}">
             <input type="file" name="image" class="form-control"><br>
             <input type="submit" name="submit" class="btn btn-md btn-primary" value="Edit Data">
             <a href="{{ url('admin/category') }}" class="btn btn-md btn-warning"><i class="fas fa-chevron-circle-left"></i> Kembali</a>

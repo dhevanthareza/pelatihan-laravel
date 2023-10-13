@@ -13,15 +13,17 @@
         <thead class="bg-primary text-light">
             <tr>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Image</th>
                 <th>Headline</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
-        {{-- @foreach ($data as $post)
+        @foreach ($data as $post)
         <tr>
             <td>{{$post->title}}</td>
+            <td>{{$post->category->name}}</td>
             <td><img width="100px" src="{{ url($post->thumbnail) }}"></td>
             <td>{{($post->is_headline == 1) ? "headline" : "tidak headline"}}</td>
             <td>{{($post->status == 1) ? "publish" : "tidak publish"}}</td>
@@ -30,7 +32,7 @@
                 <a href="{{ url('admin/post/delete/'.$post->id) }}" class="btn btn-danger btn-md"><i class="fas fa-trash"></i> Delete</a>
             </td>
         </tr>
-        @endforeach --}}
+        @endforeach
 
     </table>
 @endsection

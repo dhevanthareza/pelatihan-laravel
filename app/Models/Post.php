@@ -27,9 +27,10 @@ class Post extends Model
         'content'       => 'required'
     ];
 
-    // public function category()
-    // {
-    //     return $this->belongsTo(Category::class, 'categories_id', 'id');
-    // }
+    public function category()
+    {
+        // foreign key categories_id berelasi dengan tabel categories
+        return $this->belongsTo(Category::class, 'categories_id', 'id');
+    }
 
 }
