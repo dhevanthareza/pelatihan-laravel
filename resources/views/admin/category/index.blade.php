@@ -26,6 +26,8 @@
             </td>
         </tr>
         @endforeach
-
     </table>
+    {{ $data->links('pagination::bootstrap-4') }}
+
+
 @endsection
