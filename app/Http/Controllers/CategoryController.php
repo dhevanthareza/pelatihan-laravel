@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Category::get();
+        $search = $request->input('search');
+        $data = Category::orderBy('name', 'ASC')->where('name', 'like', '%'.$search.'%')->paginate(5);
         return view("admin.category.index", compact('data'));
     }
 

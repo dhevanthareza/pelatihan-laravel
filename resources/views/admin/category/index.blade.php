@@ -8,6 +8,19 @@
         </div>
     @endif
     <a href="{{ url('admin/category/create') }}" class="btn btn-md btn-primary mb-3"><i class="fas fa-plus"></i> Tambah Data</a>
+
+    
+    <form action="{{ url('admin/category') }}" method="GET">
+        <input class="form-control" name="search" />
+        <button type="submit" class="btn btn-primary"> Cari </button>
+    </form>
+
+
+
+
+
+
+
     <table class="table table-bordered">
         <thead class="bg-primary text-light">
             <tr>
@@ -26,6 +39,6 @@
             </td>
         </tr>
         @endforeach
-
     </table>
+    {{ $data->links("pagination::bootstrap-4") }}
 @endsection
