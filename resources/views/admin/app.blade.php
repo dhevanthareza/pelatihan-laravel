@@ -45,6 +45,9 @@
                 </li>
             </ul>
         </div>
+        <div>
+            <a class="nav-link" href="{{ url('logout') }}">Logout</a>
+        </div>
     </nav>
 
     <div class="container-fluid mt-3">

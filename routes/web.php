@@ -20,7 +20,14 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [PortalController::class, 'index']);
 Route::get("/namasaya", [PortalController::class, 'nama']);
 
-Route::prefix('admin')->group(function () {
+// Route Akses Admin
+Route::get('register', [AdminController::class, 'register']); // halaman register
+Route::post('register', [AdminController::class, 'postRegister']); // fungsi register
+Route::get('login', [AdminController::class, 'login']); // halaman login
+Route::post('login', [AdminController::class, 'postLogin']); // fungsi login
+Route::get('logout', [AdminController::class, 'logout']); // fungsi logout
+
+Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/viewform', [AdminController::class, 'fungsi_viewform']);
     Route::post('/kirimdataform', [AdminController::class, 'fungsi_kirimdataform']);

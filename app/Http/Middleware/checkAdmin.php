@@ -16,10 +16,11 @@ class checkAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(session('admin')){
-            return $next($request);
+        if(session('admin')){ // cek jika session admin ada
+            return $next($request); // jika ada session admin, maka lanjut
         }
 
+        // jika tidak ada session admin, maka kembali ke halaman login
         return redirect('login')->with('status', 'Anda harus login terlebih dahulu !');
     }
 }

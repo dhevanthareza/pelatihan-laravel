@@ -15,7 +15,7 @@
 <hr>
 
 <p>Halo, Selamat Datang di CMS BLOG !</p>
-
+{{ session('admin') }}
 
 </div>
 @endsection
